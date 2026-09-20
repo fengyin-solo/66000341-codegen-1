@@ -15,3 +15,14 @@ export interface CognateSet {
 export interface LanguageFamily {
   id: string; name: string; color: string; languages: string[]; era: string
 }
+export interface EvolutionStage {
+  word: string; language: string; meaning: string; era: string
+  note?: string      // 音变/借词等演变说明
+  gapBefore?: string // 与上一阶段之间存在断档时的原因说明（不补造缺失关联）
+}
+export type EvolutionPathStatus = 'none' | 'ok' | 'empty' | 'filtered'
+export interface EvolutionPath {
+  status: EvolutionPathStatus
+  stages: EvolutionStage[]
+  reason: string
+}
